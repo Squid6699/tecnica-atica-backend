@@ -46,11 +46,12 @@ export class ProductsService {
         return product;
     }
 
-    async deleteProduct(id: number): Promise<void> {
+    async deleteProduct(id: number): Promise<Product> {
         const product = await this.productModel.findByPk(id);
         if (!product) {
             throw new NotFoundException(`No se encontro el producto.`);
         }
         await product.destroy();
+        return product;
     }
 }
