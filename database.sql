@@ -9,3 +9,16 @@ CREATE TABLE IF NOT EXISTS products (
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO public.products ( id, codigo, nombre, descripcion, precio, stock, disponible, created_at, updated_at) VALUES 
+    ( 6, 'SKU90', 'Monitor', 'Monitor HP', 1600.00, 55, TRUE, '2026-11-15 13:31:36.767-06', '2026-11-15 13:31:36.767-06'),
+    ( 9, 'SKU55', 'Microfono', 'Microfono HyperX', 553.00, 88, TRUE, '2026-11-15 16:19:37.264-06', '2026-11-15 18:22:27.246-06'),
+    ( 4, 'SKUML', 'Mouse', 'Mouse Logitech', 599.99, 10, TRUE, '2026-11-14 17:41:25.539-06', '2026-11-15 19:01:01.132-06'),
+    ( 5, 'SKU23', 'Teclado', 'Teclado QWERTY', 510.00, 10, TRUE, '2026-11-15 13:30:23.751-06', '2026-11-15 19:01:27.046-06'),
+    ( 10, 'SKUM3', 'Television', 'Television Samsung', 5699.00, 2, TRUE, '2026-11-15 19:09:23.555-06', '2026-11-15 19:09:24.616-06'),
+    ( 11, 'SKUW2', 'Consola Nintendo Switch 2', 'Capacidad: 256 GB. Pantalla táctil de 7.9 pulgadas con resolución de 1920 px x 1080 px para visualización detallada de los gráficos.', 10669.00, 500, TRUE, '2026-11-15 22:33:29.513-06', '2026-11-15 22:33:29.513-06'),
+    ( 13, 'SKUA3', 'Apple AirPods Pro 3 Color Blanco Con Cancelación De Ruido', 'La mejor cancelación activa de ruido del mundo dentro del oído. Rendimiento de audio revolucionario.', 4192.00, 67, TRUE, '2026-11-15 22:35:01.141-06', '2026-11-15 22:35:01.141-06'),
+    ( 14, 'SKU3D', 'Impresora 3d Bambu Lab A1 Combo', 'Voltaje: 127V. Calibración Automática Completa: Asegura impresiones precisas y sin complicaciones desde el primer uso.', 9999.00, 55, TRUE, '2026-11-15 22:36:50.919-06', '2026-11-15 22:36:50.919-06'),
+    ( 15, 'SKUS7', 'Sony Audífonos inalámbricos', 'Los audífonos inalámbricos on-ear con cancelación de ruido más livianos de Sony. Lleva la cancelación de ruido al siguiente nivel con el procesador integrado V1 de Sony, para que puedas sumergirte por completo en la música.', 1499.00, 55, TRUE, '2026-11-15 22:41:44.142-06', '2026-11-15 22:41:44.142-06'),
+    ( 16, 'SKU29', 'Volante De Carreras Logitech G923 Compatible Ps Y Pc Negro', 'Conectividad USB. Compatible con PlayStation 4 PlayStation 5 PC.', 4749.00, 76, TRUE, '2026-11-15 22:47:56.621-06', '2026-11-15 22:47:56.621-06'),
+    ( 12, 'SKUP5', 'Consola PlayStation 5 Slim Digital 825 GB', 'Capacidad: 825 GB. Incluye control. Memoria RAM de 16GB.', 11619.00, 500, TRUE, '2026-11-15 22:34:18.608-06', '2026-11-15 22:49:49.455-06');
