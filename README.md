@@ -46,6 +46,7 @@ Todos los endpoints de productos usan el prefijo `/api/products`.
 | Método | Ruta | Descripción |
 | --- | --- | --- |
 | `GET` | `/api/products` | Devuelve todos los productos. |
+| `GET` | `/api/products/paginated?page=1` | Devuelve los productos paginados de 10 en 10. La página comienza en `1`. |
 | `GET` | `/api/products/:id` | Devuelve el producto cuyo `id` coincide con el parámetro. Si no existe, la respuesta es `null`. |
 | `POST` | `/api/products` | Crea un producto. Rechaza códigos repetidos con `409 Conflict`. |
 | `PUT` | `/api/products/:id` | Actualiza parcialmente un producto existente. Devuelve `404 Not Found` si no existe. |
@@ -74,6 +75,9 @@ El cuerpo JSON acepta estas propiedades:
 
 Las validaciones fallidas devuelven `400 Bad Request` con una propiedad
 `errors` que contiene el campo y el mensaje correspondiente.
+
+La respuesta de `/api/products/paginated` contiene `data` con los productos de
+la página solicitada y los metadatos `total`, `page`, `limit` y `totalPages`.
 
 
 

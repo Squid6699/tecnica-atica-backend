@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from "@nestjs/common";
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from "@nestjs/common";
 import { Product } from "./products.model.js";
 import { InjectModel } from "@nestjs/sequelize";
 import { CreateProductDto } from "./dto/create-product.dto.js";
@@ -8,6 +8,8 @@ import { CreateProductDto } from "./dto/create-product.dto.js";
 export class ProductsService {
 
     constructor(@InjectModel(Product) private productModel: typeof Product) {}
+
+    private static readonly PRODUCTS_PER_PAGE = 10;
 
     async createProduct(productData: CreateProductDto): Promise<Product> {
 
@@ -31,6 +33,28 @@ export class ProductsService {
 
     async getAllProducts(): Promise<Product[]> {
         return this.productModel.findAll();
+    }
+
+    async getPaginatedProducts(page: number) {
+
+        if (page < 1) {
+            throw new BadRequestException('La pagina debe ser un numero mayor o igual a 1.');
+        }
+
+        const limit = ProductsService.PRODUCTS_PER_PAGE;
+        const { rows, count } = await this.productModel.findAndCountAll({
+            limit,
+            offset: (page - 1) * limit,
+            order: [['id', 'ASC']],
+        });
+
+        return {
+            data: rows,
+            total: count,
+            page,
+            limit,
+            totalPages: Math.ceil(count / limit),
+        };
     }
 
     async getProductById(id: number): Promise<Product | null> {

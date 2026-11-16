@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { BadRequestException, Body, Controller, DefaultValuePipe, Delete, Get, Param, ParseIntPipe, Post, Put, Query } from '@nestjs/common';
 import { ProductsService } from './products.service.js';
 import { CreateProductDto } from './dto/create-product.dto.js';
 import { UpdateProductDto } from './dto/update-product.dto.js';
@@ -10,6 +10,11 @@ export class ProductsController {
     @Get()
     async getAllProducts() {
         return this.productsService.getAllProducts();
+    }
+
+    @Get('paginated')
+    async getPaginatedProducts(@Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number) {
+        return this.productsService.getPaginatedProducts(page);
     }
 
     @Get(':id')
